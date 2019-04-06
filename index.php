@@ -16,7 +16,6 @@
       <a class="navbar-brand" href="#">Inventory</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="#" id="search">Search</a></li>
       <li><a href="#" id="vehicle">Vehicles</a></li>
       <li><a href="#" id="dealer">Dealers</a></li>
       <li><a href="#" id="employee">Employees</a></li>
