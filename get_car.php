@@ -12,10 +12,19 @@ class load_car{
 		$sql = "SELECT * FROM vehicle GROUP BY vin_num";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
-
+echo "<script>";
+echo "$(document).ready(function(){";
+echo "$('#myInput').on('keyup', function() {";
+echo "var value = $(this).val().toLowerCase();";
+echo  "$('#myTable tr').filter(function() {";
+echo  "$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)";
+echo   "});";
+echo  "});";
+echo "});";
+echo "</script>";
 		echo "<div class='container'>";
   		echo "<h2>Vehicle Table</h2>";
-  		echo "<p>Following table contains all the vehicles in our inventory:</p>";            
+  		echo "<input id='myInput' type='text' placeholder='Search..'>";            
   		echo "<table class='table'>";
     		echo "<thead>";
       		echo "<tr>";
@@ -26,9 +35,10 @@ class load_car{
         	echo "<th>Color</th>";
         	echo "<th>MSRP</th>";
         	echo "<th>Availability</th>";
+		echo "<th>Location</th>";
       		echo "</tr>";
     		echo "</thead>";
-    		echo "<tbody>";
+    		echo "<tbody id='myTable'>";
 		while($row = mysqli_fetch_assoc($result))
     		{
 		$vin = $row['vin_num'];
@@ -55,7 +65,13 @@ class load_car{
 		echo "<td>AVAILABLE</td>";}
 		else
 		{echo "<td>SOLD</td>";}
-	        }
+	       // }
+		$sql3 = "SELECT d.name FROM dealer d, inventory i WHERE i.vin_num = '$vin' && i.d_id=d.d_id";
+		$result3 = mysqli_query($db, $sql3);
+		$row3 = mysqli_fetch_assoc($result3);
+		$dealer = $row3['name'];
+		echo "<td>" . $dealer . "</td>";}
+		
 		echo "</tbody>";
   		echo "</table>";
 		echo "</div>";	

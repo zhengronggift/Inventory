@@ -12,10 +12,19 @@ class load_dealer{
 		$sql = "SELECT * FROM dealer GROUP BY d_id";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
-
+echo "<script>";
+echo "$(document).ready(function(){";
+echo "$('#myInput').on('keyup', function() {";
+echo "var value = $(this).val().toLowerCase();";
+echo  "$('#myTable tr').filter(function() {";
+echo  "$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)";
+echo   "});";
+echo  "});";
+echo "});";
+echo "</script>";
 		echo "<div class='container'>";
   		echo "<h2>Dealer Table</h2>";
-  		echo "<p>Following table contains all the dealer information:</p>";            
+  		echo "<input id='myInput' type='text' placeholder='Search..'>";          
   		echo "<table class='table'>";
     		echo "<thead>";
       		echo "<tr>";
@@ -29,7 +38,7 @@ class load_dealer{
         	echo "<th>Number of Vehicles</th>";
       		echo "</tr>";
     		echo "</thead>";
-    		echo "<tbody>";
+    		echo "<tbody id='myTable'>";
 		while($row = mysqli_fetch_assoc($result))
     		{
 		$d_id = $row['d_id'];
