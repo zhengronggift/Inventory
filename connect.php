@@ -1,4 +1,5 @@
 <?php
+session_start();
 define('db_servername', 'localhost');
 define('db_username', 'rzheng');
 define('db_dbname', 'rzheng');
