@@ -1,4 +1,5 @@
 <?php
+//get table for vehicles
 include('connect.php');
 class load_car{
 	var $message = array();
@@ -9,19 +10,9 @@ class load_car{
 	function loadcar(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
-		$sql = "SELECT * FROM vehicle GROUP BY vin_num";
+		$sql = "SELECT * FROM vehicle ORDER BY make";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
-echo "<script>";
-echo "$(document).ready(function(){";
-echo "$('#myInput').on('keyup', function() {";
-echo "var value = $(this).val().toLowerCase();";
-echo  "$('#myTable tr').filter(function() {";
-echo  "$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)";
-echo   "});";
-echo  "});";
-echo "});";
-echo "</script>";
 		echo "<div class='container'>";
   		echo "<h2>Vehicle Table</h2>";
   		echo "<input id='myInput' type='text' placeholder='Search..'>";            
@@ -39,8 +30,10 @@ echo "</script>";
       		echo "</tr>";
     		echo "</thead>";
     		echo "<tbody id='myTable'>";
+		$i = 0;
 		while($row = mysqli_fetch_assoc($result))
     		{
+		
 		$vin = $row['vin_num'];
 		$make = $row['make'];
 		$model = $row['model'];
@@ -48,13 +41,14 @@ echo "</script>";
 		$color = $row['color'];
 		$msrp = $row['msrp'];
 		echo "<tr>";
-        	echo "<td>" . $vin . "</td>";
+        	echo "<td><a href='#' id='vin$i'>" . $vin . "</a></td>";
+		$vin_array[$i] = $vin;
 		echo "<td>" . $make . "</td>";
         	echo "<td>" . $model . "</td>";
         	echo "<td>" . $year . "</td>";
         	echo "<td>" . $color . "</td>";
         	echo "<td>" . $msrp . "</td>";
-
+		$i++;
 		//echo "Vin:" . $vin . " Model:" . $model . " Year:" . $year . " Color:" . $color . " MSRP:" . $msrp . " ";
 
 		//check if the car is sold
@@ -71,13 +65,32 @@ echo "</script>";
 		$row3 = mysqli_fetch_assoc($result3);
 		$dealer = $row3['name'];
 		echo "<td>" . $dealer . "</td>";}
-		
+echo "<script>";
+//search
+echo "$(document).ready(function(){";
+echo "$('#myInput').on('keyup', function() {";
+echo "var value = $(this).val().toLowerCase();";
+echo  "$('#myTable tr').filter(function() {";
+echo  "$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)";
+echo   "});";
+echo  "});";
+echo "});";
+//get vin
+for ($v = 0; $v < $i; $v++){
+echo "$(document).ready(function(){";
+echo "$('#vin$v').on('click', function() {";
+echo "$('#content').load('car_info.php?vin=$vin_array[$v]')";	
+echo  "});";
+echo "});";
+}
+echo "</script>";
 		echo "</tbody>";
   		echo "</table>";
 		echo "</div>";	
+		}
 	}	
 
-}
+
 
 $load = new load_car();
 //implement

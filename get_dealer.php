@@ -9,7 +9,7 @@ class load_dealer{
 	function loadcar(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
-		$sql = "SELECT * FROM dealer GROUP BY d_id";
+		$sql = "SELECT * FROM dealer ORDER BY name";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
 echo "<script>";

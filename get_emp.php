@@ -9,7 +9,7 @@ class load_emp{
 	function loade(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
-		$sql = "SELECT * FROM employee GROUP BY e_id";
+		$sql = "SELECT * FROM employee ORDER BY l_name";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
 echo "<script>";
@@ -30,8 +30,8 @@ echo "</script>";
     		echo "<thead>";
       		echo "<tr>";
         	echo "<th>Employee ID</th>";
-        	echo "<th>First Name</th>";
         	echo "<th>Last Name</th>";
+		echo "<th>First Name</th>";
         	echo "<th>Job Location</th>";
         	echo "<th>Car Sold</th>";
       		echo "</tr>";
@@ -54,8 +54,8 @@ echo "</script>";
 		//$sold = $row['sold'];
 		echo "<tr>";
         	echo "<td>" . $e_id . "</td>";
+		echo "<td>" . $l_name . "</td>";
 		echo "<td>" . $f_name . "</td>";
-        	echo "<td>" . $l_name . "</td>";
         	echo "<td>" . $row2['name'] . "</td>";
         	echo "<td>" . $row3['num_sold'] . "</td>";
 	        }
