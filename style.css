@@ -1,7 +1,6 @@
 body{
     background-color: #d6d6d6;
 }
-
 #bootstrap-overrides .navbar {
     background-color: #0f8eeaf7;
 }
@@ -21,4 +20,7 @@ body{
 #bootstrap-overrides .button1:hover{
     background-color: white;
     color:#0f8eeaf7;
+}
+#bootstrap-overrides .info {
+    text-align: center;
 }

@@ -27,6 +27,7 @@
     </ul>
   </div>
 </nav>
+    <p class="info">This is an online dealership database. Funtionalities available are add/delete from employees table, dealership table, and vehicle table. There is also viewing capabilities with indepth details pertaining to number of current employees and employee details. The current availability of vehicle's in inventory and their locations with prices and MSRP value. All of the current dealerships with employee and vehicle details.</p>
   
 <div id = "content" class="container">
 </div>
