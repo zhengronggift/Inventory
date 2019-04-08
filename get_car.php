@@ -96,3 +96,4 @@ $load = new load_car();
 //implement
 
 ?>
+<button class="button button1">Add Vehicle</button> 
