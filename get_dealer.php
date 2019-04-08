@@ -12,16 +12,6 @@ class load_dealer{
 		$sql = "SELECT * FROM dealer ORDER BY name";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
-echo "<script>";
-echo "$(document).ready(function(){";
-echo "$('#myInput').on('keyup', function() {";
-echo "var value = $(this).val().toLowerCase();";
-echo  "$('#myTable tr').filter(function() {";
-echo  "$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)";
-echo   "});";
-echo  "});";
-echo "});";
-echo "</script>";
 		echo "<div class='container'>";
   		echo "<h2>Dealer Table</h2>";
   		echo "<input id='myInput' type='text' placeholder='Search..'>";          
@@ -39,6 +29,7 @@ echo "</script>";
       		echo "</tr>";
     		echo "</thead>";
     		echo "<tbody id='myTable'>";
+		$i = 0;
 		while($row = mysqli_fetch_assoc($result))
     		{
 		$d_id = $row['d_id'];
@@ -59,7 +50,9 @@ echo "</script>";
 		//$num = $row['num'];
 		echo "<tr>";
         	echo "<td>" . $d_id . "</td>";
-		echo "<td>" . $name . "</td>";
+		echo "<td><a href='#' id='vin$i'>" . $name . "</a></td>";
+		$vin_array[$i] = $d_id;
+		$i++;
         	echo "<td>" . $row2['f_name'] . " " . $row2['l_name'] . "</td>";
 		echo "<td>" . $city . "</td>";
         	echo "<td>" . $state . "</td>";
@@ -67,7 +60,25 @@ echo "</script>";
 		echo "<td>" . $row4['num_emp'] . "</td>";
 		echo "<td>" . $row3['num_vehicles'] . "</td>";
 		}
-
+echo "<script>";
+//search
+echo "$(document).ready(function(){";
+echo "$('#myInput').on('keyup', function() {";
+echo "var value = $(this).val().toLowerCase();";
+echo  "$('#myTable tr').filter(function() {";
+echo  "$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)";
+echo   "});";
+echo  "});";
+echo "});";
+//get vin
+for ($v = 0; $v < $i; $v++){
+echo "$(document).ready(function(){";
+echo "$('#vin$v').on('click', function() {";
+echo "$('#content').load('dealer_info.php?did=$vin_array[$v]')";	
+echo  "});";
+echo "});";
+}
+echo "</script>";
 		echo "</tbody>";
   		echo "</table>";
 		echo "</div>";	

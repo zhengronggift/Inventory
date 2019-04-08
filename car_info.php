@@ -43,14 +43,16 @@ class load_car{
 		if ($row == 0){
 		echo "AVAILABLE ";
 		echo "<a href='#' id='sold'>Mark As Sold</a><br>";
-		echo "Location: " . $dealer . "<a href='#' id='trans'> Transfer</a><br><br>";		
+		echo "Location: " . $dealer . "<a href='#' id='trans'> Transfer</a><br>";	
+		echo "<button type='button' id='delete'>Delete</button><br><br>";	
 		}
 		else
 		{echo "SOLD<br>";
 		echo "Sold by: " . $row['f_name'] . " " . $row['l_name'] . "<br>";
 		echo "Sold date: " . $row['sold_d'] . "<br>";
 		echo "Sold price: $" . $row['sold_p'] . "<br>";
-		echo "Location: " . $dealer . "<br><br>";}
+		echo "Location: " . $dealer . "<br><br>";
+		}
 
 
 echo "<script>";
@@ -64,6 +66,11 @@ echo "});";
 echo "$(document).ready(function(){";
 echo "$('#trans').on('click', function() {";
 echo "$('#content2').load('transf_car.php?vin=$vin')";	
+echo  "});";
+echo "});";
+echo "$(document).ready(function(){";
+echo "$('#delete').on('click', function() {";
+echo "$('#content').load('delete_car.php?vin=$vin')";	
 echo  "});";
 echo "});";
 echo "</script>";

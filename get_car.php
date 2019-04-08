@@ -9,8 +9,11 @@ class load_car{
 
 	function loadcar(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
+		$did = $_GET['did']; 
 		//echo $file;
-		$sql = "SELECT * FROM vehicle ORDER BY make";
+		if ($did == 0){
+		$sql = "SELECT * FROM vehicle ORDER BY make";}
+		elseif ($did != 0){$sql = "SELECT * FROM vehicle WHERE d_id = '$did' ORDER BY make";}
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
 		echo "<div class='container'>";
@@ -96,4 +99,3 @@ $load = new load_car();
 //implement
 
 ?>
-<button class="button button1">Add Vehicle</button> 

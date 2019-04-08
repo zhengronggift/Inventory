@@ -68,5 +68,5 @@ echo "</script>";
 
 $load = new load_emp();
 //implement
+
 ?>
-<button class="button button1">Add Employee</button>

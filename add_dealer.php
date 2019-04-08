@@ -14,57 +14,39 @@ class Register{
 	    die("Connection failed: " . $conn->connect_error);
 	}
 	if(isset($_POST['register'])){
-	//$eid=$_POST['e_id'];
-	$did=$_POST['d_id'];
-	$fname=$_POST['f_name'];
-	$lname=$_POST['l_name'];
+	$dname=$_POST['d_name'];
+	$city=$_POST['city'];
+	$state=$_POST['state'];
+	$zip=$_POST['zip'];
+	//$f_name=$_POST['f_name'];
+	//$l_name=$_POST['l_name'];
 
-
-	if($did == "" || $fname == "" || $lname == "") //$eid == "" || 
+	if($dname == "" || $city == "" || $state == "" || $zip == "") 
 	{
-	 echo "Dealer ID, First Name, or Last Name cannot be empty";
+	 echo "Dealer Name, City, State, Zip Code cannot be empty";
 	}
 
-	if(ctype_alnum($did)){ 
-	$fname=ucfirst($fname);
-	$lname=ucfirst($lname);
-	//echo "<br>username accept";
-	//check to see if username in use
-	//$query="SELECT `e_id` FROM employee WHERE `e_id` = '$eid'";
-	$query2="SELECT `d_id` FROM dealer WHERE `d_id` = '$did'";
-	//echo $query;
-	//$result=mysqli_query($conn, $query);
+	if(ctype_alnum($zip)){ 
+	$query2="SELECT `name`, `zip_code` FROM dealer WHERE `name` = '$dname' AND `zip_code` = '$zip'";
 	$result2=mysqli_query($conn, $query2);
-	//$num=mysqli_num_rows($result);
 	$num2=mysqli_num_rows($result2);	
-
-	if ($num2 > 0) //$num == 0 && 
+	//if dealer name does not exist within same zip code
+	if ($num2 == 0) //$num == 0 && 
 	{
-	//echo "<br>Search result: $num; Employee ID $eid is not in use";
-$sql = "INSERT INTO `employee`(`d_id`, `f_name`, `l_name`) 
-VALUES ('$did', '$fname','$lname')"; //`e_id`, '$eid', 
+	
+$sql = "INSERT INTO `dealer`(`name`, `city`, `state`,`zip_code`) 
+VALUES ('$dname', '$city','$state','$zip')"; //`e_id`, '$eid', 
 
 	if ($conn->query($sql) === TRUE) {
-	    echo "<br>******New user created successfully.******";
-	    header("location:index.php");
+	    echo "<br>******New Dealer created successfully.******";
+	    //header("location:index.php");
 	}else {
-	    echo "Error: " . $sql . "<br>The test data added already<br>" . $conn->error;
+	    echo "Something goes wrong";
 	}
-	}elseif ($num2 == 0){ //$num == 0 && 
-		echo "<br>Search result: Cannot find the Dealer ID, Please use one of following dealer ID <br>";
-		//$qls = "SELECT `d_id`, `name` FROM dealer";
-		//$rst=mysqli_query($conn, $qls);
-		//while($row2 = mysqli_fetch_assoc($rst))
-		//{
-		//	$dealerID = $row2['d_id'];
-		//	$dname = $row2['name'];
-		//	echo "Dealer ID: " . $dealerID . " " . $dname . "<br>";
-			
-		//}
-		//echo "<br>";
-	}//elseif ($num != 0){
-	//	echo "<br>The Employee ID is in use, please use another Employee ID. <br>";
-	//}
+	}elseif ($num2 != 0){ //$num == 0 && 
+		echo "<br>A dealer with same name already exist in this zip code<br>";
+
+	}
 
 	}
 	}
@@ -82,13 +64,16 @@ echo  "});";
 echo "});";
 echo "</script>";
 
-	echo "<br><br><p>Register</p>";
-	echo "<form action='reg_emp.php' method='POST'>";
+	echo "<br><br><p>Add A Dealer</p>";
+	echo "<form action='add_dealer.php' method='POST'>";
 	//echo "<p>Employee ID: <input type='text' name='e_id' size='15' maxlength='20' value = ''></p>";
-	echo "<p>Dealer ID: <input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";
-	echo "<p>First Name: <input type='text' name='f_name' size='15' maxlength='20' value = ''></p>";
-	echo "<p>Last Name: <input type='text' name='l_name' size='15' maxlength='20' value = ''></p>";
-
+	//echo "<p>Dealer ID: <input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";
+	echo "<p>Dealer Name: <input type='text' name='d_name' size='15' maxlength='20' value = ''></p>";
+	//echo "<p>Manager First Name: <input type='text' name='f_name' size='15' maxlength='20' value = ''></p>";
+	//echo "<p>Manager Last Name: <input type='text' name='l_name' size='15' maxlength='20' value = ''></p>";
+	echo "<p>City: <input type='text' name='city' size='15' maxlength='20' value = ''></p>";
+	echo "<p>State: <input type='text' name='state' size='15' maxlength='20' value = ''></p>";
+	echo "<p>Zip Code: <input type='text' name='zip' size='15' maxlength='20' value = ''></p>";
 	echo "<p><input type='submit' name='register' value='Register'></p>";
 	echo "</form>";
 	}
@@ -101,16 +86,17 @@ echo "</script>";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
 		echo "<div class='container'>";
-  		echo "<h2>Find Dealer</h2>";
-		echo "<input id='myInput' type='text' placeholder='Dealer ID Search..'>";          
+  		echo "<h2>Find Dealer Close By</h2>";
+		echo "<input id='myInput' type='text' placeholder='Dealer Search..'>";          
   		echo "<table class='table'>";
     		echo "<thead>";
       		echo "<tr>";
-        	echo "<th>Dealer ID</th>";
+        	//echo "<th>Dealer ID</th>";
         	echo "<th>Name</th>";
         	echo "<th>Manager</th>";
         	echo "<th>City</th>";
         	echo "<th>State</th>";
+		echo "<th>Zip Code</th>";
         	//echo "<th>Zip Code</th>";
 		//echo "<th>Number of Employees</th>";
       		echo "</tr>";
@@ -129,11 +115,12 @@ echo "</script>";
 		//$emp = $row['employee'];
 		//$num = $row['num'];
 		echo "<tr>";
-        	echo "<td>" . $d_id . "</td>";
+        	//echo "<td>" . $d_id . "</td>";
 		echo "<td>" . $name . "</td>";
         	echo "<td>" . $row2['f_name'] . " " . $row2['l_name'] . "</td>";
 		echo "<td>" . $city . "</td>";
         	echo "<td>" . $state . "</td>";
+		echo "<td>" . $row['zip_code'] . "</td>";
         	//echo "<td>" . $zip_code . "</td>";
 		//echo "<td>" . $row4['num_emp'] . "</td>";
 		}
@@ -144,9 +131,7 @@ echo "</script>";
 }
 
 
-
 }
 
 $reg = new Register();
 ?>
-

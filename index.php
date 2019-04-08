@@ -14,20 +14,15 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">DMC</a>
+      <a class="navbar-brand" id='home'>DMC</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#" id="vehicle">Vehicles</a></li>
-      <li><a href="#" id="dealer">Dealers</a></li>
-      <li><a href="#" id="employee">Employees</a></li>
-    </ul>
     <ul class="nav navbar-nav navbar-right">
-	<li><a href="#" id="sign_up"><span class="glyphicon glyphicon-user"></span> Employee Register</a></li>
-      	<li><a href="#" id="upload"><span class="glyphicon glyphicon-log-in"></span> Upload Vehicle</a></li>
+	<li><a href="#" id="dealer"> Dealerships</a></li>
+      	<li><a href="#" id="vehicle"></span> Vehicles</a></li>
+	<li><a href="#" id="upload"></span> Add Vehicles</a></li>
     </ul>
   </div>
 </nav>
-    <p class="info">This is an online dealership database. Funtionalities available are add/delete from employees table, dealership table, and vehicle table. There is also viewing capabilities with indepth details pertaining to number of current employees and employee details. The current availability of vehicle's in inventory and their locations with prices and MSRP value. All of the current dealerships with employee and vehicle details.</p>
   
 <div id = "content" class="container">
 </div>
@@ -35,32 +30,28 @@
 </div>
 <div id = "content3" class="container">
 </div>
+<div id = "content4" class="container">
+</div>
 
 <script>
 $(document).ready( function() {
+		$("#content").text("Welcome to the Inventory");
+});
+$(document).ready( function() {
+	$("#home").on("click", function() {
+		$("#content").text("Welcome to the Inventory");		
+	});
+});
+$(document).ready( function() {
 	$("#vehicle").on("click", function() {
-		$("#content").load("get_car.php");
+		$("#content").load("get_car.php?did=0");
 		$("#content2").text("");
 		$("#content3").text("");	
 	});
 });
 $(document).ready( function() {
 	$("#dealer").on("click", function() {
-		$("#content").load("get_dealer.php");	
-		$("#content2").text("");
-		$("#content3").text("");	
-	});
-});
-$(document).ready( function() {
-	$("#employee").on("click", function() {
-		$("#content").load("get_emp.php");
-		$("#content2").text("");
-		$("#content3").text("");		
-	});
-});
-$(document).ready( function() {
-	$("#sign_up").on("click", function() {
-		$("#content").load("reg_emp.php");
+		$("#content").load("get_dealer.php");
 		$("#content2").text("");
 		$("#content3").text("");		
 	});
