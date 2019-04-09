@@ -1,3 +1,14 @@
+<button type="button" id="add_emp">Add New Employees</button>
+<script>
+$(document).ready( function() {
+	$("#add_emp").on("click", function() {
+		$("#content").load("reg_emp.php?did=<?php echo $_GET['did']; ?>");
+		$("#content2").text("");	
+		$("#content3").text("");	
+	});
+});
+</script>
+
 <?php
 include('connect.php');
 class load_emp{

@@ -19,7 +19,7 @@
     <ul class="nav navbar-nav navbar-right">
 	<li><a href="#" id="dealer"> Dealerships</a></li>
       	<li><a href="#" id="vehicle"></span> Vehicles</a></li>
-	<li><a href="#" id="upload"></span> Add Vehicles</a></li>
+	<li><a href="#" id="add_dealer"><span class="glyphicon glyphicon-log-in"></span> Add Dealer</a></li>
     </ul>
   </div>
 </nav>
@@ -57,8 +57,8 @@ $(document).ready( function() {
 	});
 });
 $(document).ready( function() {
-	$("#upload").on("click", function() {
-		$("#content").load("upload_veh.php");	
+	$("#add_dealer").on("click", function() {
+		$("#content").load("add_dealer.php");	
 		$("#content2").text("");
 		$("#content3").text("");	
 	});
