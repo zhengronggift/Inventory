@@ -1,4 +1,3 @@
-<button type="button" id="add_car">Add Vehicle</button>
 <script>
 $(document).ready( function() {
 	$("#add_car").on("click", function() {
@@ -106,3 +105,5 @@ echo "</script>";
 $load = new load_car();
 //implement
 ?>
+
+<button class="button button1" type="button" id="add_car">Add Vehicle</button>

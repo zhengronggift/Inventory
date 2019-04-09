@@ -90,3 +90,5 @@ $load2 = new load_dealer();
 //implement
 
 ?>
+
+<button class="button button1" type="button" id="add_dealer">Add Dealership</button>
