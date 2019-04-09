@@ -1,3 +1,14 @@
+<button type="button" id="add_car">Add Vehicle</button>
+<script>
+$(document).ready( function() {
+	$("#add_car").on("click", function() {
+		$("#content").load("upload_veh.php?did=<?php echo $_GET['did']; ?>");
+		$("#content2").text("");	
+		$("#content3").text("");	
+	});
+});
+</script>
+
 
 <?php
 //get table for vehicles
@@ -95,4 +106,3 @@ echo "</script>";
 $load = new load_car();
 //implement
 ?>
-<button href="button button1">Add Vehicle</button>

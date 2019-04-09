@@ -15,8 +15,11 @@ class Register{
 	}
 	if(isset($_POST['register'])){
 	$dname=$_POST['d_name'];
+	$dname=ucfirst($dname);
 	$city=$_POST['city'];
+	$city=ucfirst($city);
 	$state=$_POST['state'];
+	$state=ucfirst($state);
 	$zip=$_POST['zip'];
 	//$f_name=$_POST['f_name'];
 	//$l_name=$_POST['l_name'];
@@ -39,7 +42,7 @@ VALUES ('$dname', '$city','$state','$zip')"; //`e_id`, '$eid',
 
 	if ($conn->query($sql) === TRUE) {
 	    echo "<br>******New Dealer created successfully.******";
-	    //header("location:index.php");
+	    header("location:index.php");
 	}else {
 	    echo "Something goes wrong";
 	}

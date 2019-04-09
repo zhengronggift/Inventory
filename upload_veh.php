@@ -1,10 +1,12 @@
 <?php
+//echo $_GET['did']; 
 include ('connect.php');
 class Upload{
 	function __constructor(){
 	$this->upload();
 }
 function upload(){
+$did = $_GET['did'];
 echo "<script>";
 echo "$(document).ready(function(){";
 echo "$('#myInput').on('keyup', function() {";
@@ -16,11 +18,15 @@ echo  "});";
 echo "});";
 echo "</script>";
 		echo "<br>Upload a vehicle <br><br>";
-		echo "<form action='upload_veh.php' method='POST' enctype='multipart/form-data'>";
+		echo "<form action='upload_veh.php?did=$did' method='POST' enctype='multipart/form-data'>";
 		echo "Upload Image:<br>";
 		echo "<input type='file' name='file' value = ''><br>";
 		echo "Vehicle Vin Number: "."<input type='text' name='vin'><br>";
-		echo "Dealer ID: "."<input type='text' name='d_id'><br>";
+		if ($did == "0")
+		{echo "Dealer ID: "."<input type='text' name='d_id'><br>";}
+		elseif ($did != "0")
+		{echo "Dealer ID: ". $did ."<br>";}
+	
 		echo "Make: "."<input type='text' name='make'><br>";
 		echo "Model: "."<input type='text' name='model'><br>";
 		echo "Year: "."<input type='text' name='year'><br>";
@@ -40,12 +46,16 @@ echo "</script>";
 			$name = $_FILES['file']['name'];
 			$extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
 			$make = $_POST['make'];
+			$make = ucfirst($make);
 			$model = $_POST['model'];
+			$model = ucfirst($model);
 			$year = $_POST['year'];
 			$color = $_POST['color'];
+			$color = ucfirst($color);
 			$msrp = $_POST['msrp'];
 			//$acp = $_POST['acprice'];
-			$did = $_POST['d_id'];
+			if ($did == "0"){
+			$did = $_POST['d_id'];}
 			//check vin number does not exist
 			$sql = "SELECT `vin_num`,`make`,`model` FROM vehicle WHERE `vin_num` = '$vin' AND `make` = '$make' AND `model` = '$model'";
 			$result=mysqli_query($conn, $sql);
@@ -61,6 +71,7 @@ if (isset($name)){
 				$model = ucfirst($model);
 				$vin = strtoupper($vin);
 				//upload
+				$location = 'picture/';
 				move_uploaded_file($_FILES["file"]["tmp_name"], "picture/{$vin}.jpg");
 				$sql1 = "INSERT INTO `vehicle`(`vin_num`,`make`, `model`, `year`, `color`,`msrp`) VALUES ('$vin','$make','$model','$year','$color','$msrp')";
 				$sql2 = "INSERT INTO `inventory`(`vin_num`,`d_id`) VALUES ('$vin','$did')";

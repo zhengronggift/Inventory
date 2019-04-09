@@ -11,5 +11,5 @@ $sql2 = "DELETE FROM inventory WHERE vin_num = '$vin'";
 $result = mysqli_query($conn, $sql2);
 $result2 = mysqli_query($conn, $sql);
 //$row2 = mysqli_fetch_assoc($result2);
-echo "The vihecle is deleted";
+echo "The vehicle is deleted";
 ?>
