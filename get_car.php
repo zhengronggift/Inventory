@@ -1,19 +1,20 @@
+
 <?php
 //get table for vehicles
+//echo $_GET['did'];
 include('connect.php');
 class load_car{
 	var $message = array();
 	function __construct(){
 		$this->loadcar();
   	}
-
 	function loadcar(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		$did = $_GET['did']; 
 		//echo $file;
 		if ($did == 0){
 		$sql = "SELECT * FROM vehicle ORDER BY make";}
-		elseif ($did != 0){$sql = "SELECT * FROM vehicle WHERE d_id = '$did' ORDER BY make";}
+		elseif ($did != 0){$sql = "SELECT * FROM inventory i, vehicle v WHERE i.d_id = '$did' AND v.vin_num = i.vin_num";}
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
 		echo "<div class='container'>";
@@ -53,7 +54,6 @@ class load_car{
         	echo "<td>" . $msrp . "</td>";
 		$i++;
 		//echo "Vin:" . $vin . " Model:" . $model . " Year:" . $year . " Color:" . $color . " MSRP:" . $msrp . " ";
-
 		//check if the car is sold
 		$sql1 = "SELECT vin_num FROM sale WHERE vin_num = '$vin'";
 		$result2 = mysqli_query($db, $sql1);
@@ -92,11 +92,7 @@ echo "</script>";
 		echo "</div>";	
 		}
 	}	
-
-
-
 $load = new load_car();
 //implement
-
 ?>
 <button href="button button1">Add Vehicle</button>

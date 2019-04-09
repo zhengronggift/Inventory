@@ -9,7 +9,8 @@ class load_emp{
 	function loade(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
-		$sql = "SELECT * FROM employee ORDER BY l_name";
+		$did = $_GET['did']; 
+		$sql = "SELECT * FROM employee WHERE d_id = '$did' ORDER BY l_name";
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
 echo "<script>";

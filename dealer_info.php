@@ -8,20 +8,6 @@ class load_car{
 		$this->loadcar();
   	}
 		function loadcar(){
-echo "<script>";
-//action for mark sold
-echo "$(document).ready(function(){";
-echo "$('#inventory').on('click', function() {";
-echo "$('#content4').load('get_car.php?did=$did')";	
-echo  "});";
-echo "});";
-//action for transfer
-echo "$(document).ready(function(){";
-echo "$('#trans').on('click', function() {";
-echo "$('#content2').load('transf_car.php?vin=$vin')";	
-echo  "});";
-echo "});";
-echo "</script>";
 
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
@@ -45,10 +31,29 @@ echo "</script>";
         	echo $zip . "<br> ";
         	echo "Store Manager: " . $m_f . " " . $m_l . "<br>";
 		//echo " <button type='button' id='inventory'>Vehicle Inventory</button> ";
-		echo " <button type='button' id='employee'>Employees</button> ";
-		echo "<button type='button' id='sold'>Sold Vehicles</button><br>";
+		//echo " <button type='button' id='employee'>Employees</button> ";
+		//echo "<button type='button' id='sold'>Sold Vehicles</button><br>";
 
 		}
 }
 $load = new load_car();	
 ?> 
+
+<button type="button" id="inventory">Vehicle Inventory</button>
+<button type="button" id="employee">Employees</button><br>
+<script>
+$(document).ready( function() {
+	$("#inventory").on("click", function() {
+		$("#content").load("dealer_info.php?did=<?php echo $_GET['did']; ?>");
+		$("#content2").load("get_car.php?did=<?php echo $_GET['did']; ?>");
+		$("#content3").text("");		
+	});
+});
+$(document).ready( function() {
+	$("#employee").on("click", function() {
+		$("#content").load("dealer_info.php?did=<?php echo $_GET['did']; ?>");
+		$("#content2").load("get_emp.php?did=<?php echo $_GET['did']; ?>");	
+		$("#content3").text("");	
+	});
+});
+</script>
