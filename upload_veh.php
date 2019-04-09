@@ -85,7 +85,7 @@ if (isset($name)){
 }
 		}
 
-
+if ($did == "0"){
 		//get dealer table for id search
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
@@ -132,7 +132,7 @@ if (isset($name)){
 
 		echo "</tbody>";
   		echo "</table>";
-		echo "</div>";
+		echo "</div>";}
 
 }
 }
