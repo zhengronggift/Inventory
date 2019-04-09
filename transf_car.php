@@ -11,7 +11,7 @@ class tranf_car{
 	function receivem(){
 		if(isset($_POST['transfer']))
 		{
-$vin = $_GET['vin'];	
+			$vin = $_GET['vin'];	
 			$vin = $_POST['a_v'];
 			$tran = $_POST['trans_dealer'];
 			$did = $_POST['did'];
@@ -63,7 +63,7 @@ $vin = $_GET['vin'];
 		$conn = new mysqli(db_servername, db_username, db_pass, db_dbname);
 		$sql = "UPDATE `inventory` SET `d_id`='$tran' WHERE `vin_num`='$vin'";
 		if ($conn->query($sql) === TRUE) {
-   			// echo "<br>******The car is sold******";
+   			 echo "<br>******The car is transferred******";
     			 header("location:index.php");
 		}else {
     			echo "Error: Not sure what happened, but check your values. <br>";
@@ -76,3 +76,5 @@ $vin = $_GET['vin'];
 //implement
 $load = new tranf_car();
 ?>
+
+
