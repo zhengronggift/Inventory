@@ -17,7 +17,7 @@ echo   "});";
 echo  "});";
 echo "});";
 echo "</script>";
-		echo "<br>Upload a vehicle <br><br>";
+		echo "<h1 style="text-align:center"Add Vehicle</h1>";
 		echo "<form action='upload_veh.php?did=$did' method='POST' enctype='multipart/form-data'>";
 		echo "Upload Image:<br>";
 		echo "<input type='file' name='file' value = ''><br>";
