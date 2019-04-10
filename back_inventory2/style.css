@@ -1,0 +1,23 @@
+body{
+    background-color: #d6d6d6;
+}
+#bootstrap-overrides .navbar {
+    background-color: #0f8eeaf7;
+}
+#bootstrap-overrides .button{
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    padding: 16px 32px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+#bootstrap-overrides .button1{
+    background-color: #0f8eeaf7;
+    color: white;
+}
+#bootstrap-overrides .button1:hover{
+    background-color: white;
+    color:#0f8eeaf7;
+}
