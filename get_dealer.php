@@ -1,3 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <title>DMS - Welcome </title>
+       <link rel="stylesheet" href="main.css">
+   </head>
+ 
+<body>
+       <ul>
+           <li style="float:left"><a><img src="img/CircleLogo.png" alt="circle" width="20" height="20"> Welcome to DMS</a></li>
+            <li><a href="get_car.php?did=0">Vehicles</a></li>
+           <li><a href= "get_dealer.php">Dealerships</a></li>
+       </ul>
+       <br>
+       <p> </p>
+       <center>    
+
+<button class="button button1" type="button" id="add_car">Add New Vehicle</button>
+
+<script>
+$(document).ready( function() {
+	$("#add_car").on("click", function() {
+		$("#content").load("upload_veh.php?did=<?php echo $_GET['did']; ?>");
+		$("#content2").text("");	
+		$("#content3").text("");	
+	});
+});
+</script>
+
+
+
+<button class="button button1" type="button" id="add_dealer">Add Dealership</button>
+<script>
+$(document).ready( function() {
+	$("#add_dealer").on("click", function() {
+		$("#content").load("add_dealer.php");	
+		$("#content2").text("");
+		$("#content3").text("");	
+	});
+});
+</script>
+
 <?php
 include('connect.php');
 class load_dealer{
@@ -13,9 +58,9 @@ class load_dealer{
 		//echo $sql;
 		$result = mysqli_query($db, $sql);
 		echo "<div class='container'>";
-  		echo "<h2>Dealer Table</h2>";
+  		echo "<h2>Dealerships</h2>";
   		echo "<input id='myInput' type='text' placeholder='Search..'>";          
-  		echo "<table class='table'>";
+  		echo "<br><br><table class='table table-bordered'>";
     		echo "<thead>";
       		echo "<tr>";
         	echo "<th>Dealer ID</th>";
@@ -91,4 +136,6 @@ $load2 = new load_dealer();
 
 ?>
 
-<button class="button button1" type="button" id="add_dealer">Add Dealership</button>
+</div>
+</body>
+</html>

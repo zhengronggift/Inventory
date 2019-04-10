@@ -54,7 +54,7 @@ $vin = $_GET['vin'];
 		echo "<input type='text' name='sold_p' value = ''><br>";
 		echo "Employee ID: ";
 		echo "<input type='text' name='sold_e' value = ''><br>";
-		echo "<input type='submit' name='carsold' value= 'Mark As Sold'>";
+		echo "<input type='submit' class='button button1' name='carsold' value= 'Mark As Sold'>";
 		echo "</form>";
 		echo "<br>";
 	}	

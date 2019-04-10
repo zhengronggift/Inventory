@@ -42,9 +42,12 @@ class load_car{
 		echo "Availability: ";
 		if ($row == 0){
 		echo "AVAILABLE ";
-		echo "<a href='#' id='sold'>Mark As Sold</a><br>";
-		echo "Location: " . $dealer . "<a href='#' id='trans'> Transfer</a><br>";	
-		echo "<button type='button' id='delete'>Delete</button><br><br>";	
+		echo "Location: " . $dealer . "<br>";
+		echo "<button class='button button1' type='button' id='sold'> Mark As Sold</button>";
+		echo "        ";
+		echo "<button class='button button1' type='button' id='trans'> Transfer</button>";	
+		echo "        ";
+		echo "<button class='button button1' type='button' id='delete'> Delete</button><br><br>";	
 		}
 		else
 		{echo "SOLD<br>";

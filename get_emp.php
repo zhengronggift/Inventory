@@ -1,4 +1,4 @@
-<button type="button" id="add_emp">Add New Employees</button>
+<button type="button" class="button button1" id="add_emp">Add New Employees</button>
 <script>
 $(document).ready( function() {
 	$("#add_emp").on("click", function() {
@@ -38,7 +38,7 @@ echo "</script>";
 		echo "<div class='container'>";
   		echo "<h2>Employee Table</h2>";
   		echo "<input id='myInput' type='text' placeholder='Search..'>";           
-  		echo "<table class='table'>";
+  		echo "<br><br><table class='table table-bordered'>";
     		echo "<thead>";
       		echo "<tr>";
         	echo "<th>Employee ID</th>";
@@ -81,5 +81,3 @@ echo "</script>";
 $load = new load_emp();
 //implement
 ?>
-
-<button class="button button1" type="button" id="reg_emp">Add Employee</button>

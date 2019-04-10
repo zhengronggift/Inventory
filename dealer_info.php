@@ -39,8 +39,8 @@ class load_car{
 $load = new load_car();	
 ?> 
 
-<button type="button" id="inventory">Vehicle Inventory</button>
-<button type="button" id="employee">Employees</button><br>
+<button class="button button1" type="button" id="inventory">Vehicle Inventory</button>
+<button class="button button1" type="button" id="employee">Employees</button><br>
 <script>
 $(document).ready( function() {
 	$("#inventory").on("click", function() {
