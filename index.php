@@ -8,7 +8,7 @@
        <link rel="stylesheet" href="main.css">
        <link rel="stylesheet" href="style.css">
    </head>
- 
+
 <body>
        <ul>
            <li style="float:left"><a><img src="Rice&Beans_Logo.PNG" alt="rice&beans" width="20" height="20"> Welcome to DMS</a></li>

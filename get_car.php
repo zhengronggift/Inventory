@@ -6,6 +6,7 @@
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
        <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
+       <link rel="stylesheet" href="style.css">
    </head>
  
 <body>
