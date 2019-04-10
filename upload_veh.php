@@ -17,9 +17,9 @@ echo   "});";
 echo  "});";
 echo "});";
 echo "</script>";
-		echo "<h1 style="text-align:center"Add Vehicle</h1>";
+		echo "<br>Upload a vehicle<br>";
 		echo "<form action='upload_veh.php?did=$did' method='POST' enctype='multipart/form-data'>";
-		echo "Upload Image:<br>";
+		echo "Upload Image: ";
 		echo "<input type='file' name='file' value = ''><br>";
 		echo "Vehicle Vin Number: "."<input type='text' name='vin'><br>";
 		if ($did == "0")
