@@ -12,7 +12,7 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 });
 </script>
 		<p style="text-align:center">Add New Vehicle </p>
-		<form action="veh_back.php?did=<?php echo $did; ?>" method="POST" enctype="multipart/form-data"></p>
+		<form action="veh_back.php?did=<?php echo $did; ?>" method="POST" enctype="multipart/form-data">
 		<?php if ($did == "0")
 		{echo "<p style='text-align:center'>Dealer ID: "."<input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";}
 		elseif ($did != "0")

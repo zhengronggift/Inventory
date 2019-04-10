@@ -4,21 +4,19 @@
        <meta charset="utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-       <title>DMS - Welcome </title>
+       <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
    </head>
  
 <body>
        <ul>
-           <li style="float:left"><a><img src="img/CircleLogo.png" alt="circle" width="20" height="20"> Welcome to DMS</a></li>
+           <li style="float:left"><a><img src="Rice&Beans_Logo.PNG" alt="rice&beans" width="20" height="20"> Welcome to DMS</a></li>
             <li><a href="get_car.php?did=0">Vehicles</a></li>
            <li><a href= "get_dealer.php">Dealerships</a></li>
        </ul>
        <br>
-       <p> </p>
-       <center>    
-
-<button class="button button1" type="button" id="add_car">Add New Vehicle</button>
+    
+<button class="button button1" type="button" id="add_car">Add Vehicle</button>
 <script>
 $(document).ready(function(){
 $("#myInput").on("keyup", function() {
@@ -124,6 +122,5 @@ echo "</script>";
 </tbody>
   		</table>
 		</div>
-</div>
 </body>
 </html>
