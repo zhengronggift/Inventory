@@ -17,23 +17,22 @@ echo   "});";
 echo  "});";
 echo "});";
 echo "</script>";
-		echo "<br>Upload a vehicle<br>";
+		echo "<p>Add a Vehicle</p>";
 		echo "<form action='upload_veh.php?did=$did' method='POST' enctype='multipart/form-data'>";
-		echo "Upload Image: ";
-		echo "<input type='file' name='file' value = ''><br>";
-		echo "Vehicle Vin Number: "."<input type='text' name='vin'><br>";
+		echo "<p style="text-align:center">Upload Image: <input type='file' name='file' value = ''></p>";
+		echo "<p style="text-align:center">VIN #: <input type='text' name='vin' size='15' maxlength='20' value = ''></p>";
 		if ($did == "0")
 		{echo "Dealer ID: "."<input type='text' name='d_id'><br>";}
 		elseif ($did != "0")
 		{echo "Dealer ID: ". $did ."<br>";}
 	
-		echo "Make: "."<input type='text' name='make'><br>";
-		echo "Model: "."<input type='text' name='model'><br>";
-		echo "Year: "."<input type='text' name='year'><br>";
-		echo "Color: "."<input type='text' name='color'><br>";
-		echo "MSRP: "."<input type='text' name='msrp'><br>";
+		echo "<p style="text-align:center">Make: "."<input type='text' name='make' size='15' maxlength='20' value = ''></p>";
+		echo "<p style="text-align:center">Model: "."<input type='text' name='model' size='15' maxlength='20' value = ''></p>";
+		echo "<p style="text-align:center">Year: "."<input type='text' name='year' size='15' maxlength='20' value = ''></p>";
+		echo "<p style="text-align:center">Color: "."<input type='text' name='color' size='15' maxlength='20' value = ''></p>";
+		echo "<p style="text-align:center">MSRP: "."<input type='text' name='msrp' size='15' maxlength='20' value = ''></p>";
 		//echo "Actual Price: "."<input type='text' name='acprice'><br>";
-		echo "<input type='submit' name='submit' value='Upload'>";
+		echo "<input style="text-align:center" type='submit' name='submit' value='Upload'>";
 		echo "</form>";
 		
 		if (isset($_POST['submit']))

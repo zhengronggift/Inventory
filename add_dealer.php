@@ -71,12 +71,12 @@ echo "</script>";
 	echo "<form action='add_dealer.php' method='POST'>";
 	//echo "<p>Employee ID: <input type='text' name='e_id' size='15' maxlength='20' value = ''></p>";
 	//echo "<p>Dealer ID: <input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";
-	echo "<p style="text-align:center">Dealer Name: <input type='text' name='d_name' size='15' maxlength='20' value = ''></p>";
+	echo "<p style="text-align:center">Dealer Name: <input style="margin-right: 86px" type='text' name='d_name' size='15' maxlength='20' value = ''></p>";
 	//echo "<p>Manager First Name: <input type='text' name='f_name' size='15' maxlength='20' value = ''></p>";
 	//echo "<p>Manager Last Name: <input type='text' name='l_name' size='15' maxlength='20' value = ''></p>";
-	echo "<p style="text-align:center">City: <input type='text' name='city' size='15' maxlength='20' value = ''></p>";
-	echo "<p style="text-align:center">State: <input type='text' name='state' size='15' maxlength='20' value = ''></p>";
-	echo "<p style="text-align:center">Zip Code: <input type='text' name='zip' size='15' maxlength='20' value = ''></p>";
+	echo "<p style="text-align:center">City: <input style="margin-right: 30px" type='text' name='city' size='15' maxlength='20' value = ''></p>";
+	echo "<p style="text-align:center">State: <input style="margin-right: 38px" type='text' name='state' size='15' maxlength='20' value = ''></p>";
+	echo "<p style="text-align:center">Zip Code: <input style="margin-right: 65px" type='text' name='zip' size='15' maxlength='20' value = ''></p>";
 	echo "<p style="text-align:center"><input type='submit' name='register' value='Register'></p>";
 	echo "</form>";
 	}
