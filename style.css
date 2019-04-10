@@ -4,7 +4,7 @@ body{
 #bootstrap-overrides .navbar {
     background-color: #0f8eeaf7;
 }
-#bootstrap-overrides .button{
+.button{
     border: none;
     border-radius: 12px;
     text-align: center;
@@ -13,11 +13,11 @@ body{
   transition-duration: 0.4s;
   cursor: pointer;
 }
-#bootstrap-overrides .button1{
+.button1{
     background-color: #0f8eeaf7;
     color: white;
 }
-#bootstrap-overrides .button1:hover{
+.button1:hover{
     background-color: white;
     color:#0f8eeaf7;
 }
