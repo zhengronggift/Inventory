@@ -31,8 +31,8 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 });
 });
 </script>
-		<p style="text-align:center">Add New Vehicle </p>
-		<form action="veh_back.php?did=<?php echo $did; ?>" method="POST" enctype="multipart/form-data"></p>
+		<p style="text-align:center">Add Vehicle </p>
+		<form action="veh_back.php?did=<?php echo $did; ?>" method="POST" enctype="multipart/form-data">
 		<?php if ($did == "0")
 		{echo "<p style='text-align:center'>Dealer ID: "."<input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";}
 		elseif ($did != "0")
@@ -44,8 +44,9 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		<p style="text-align:center">Color: <input type="text" name="color" size="15" maxlength="20" value = ""></p>
 		<p style="text-align:center">MSRP: <input type="text" name="msrp" size="15" maxlength="20" value = ""></p>
 		<p style="text-align:center">Upload Image: </p>
-		<center><input type="file" class="button button1" name="file" value = ""></center>
-		<p style="text-align:center"><input type="submit" class="button button1" name="submit" value="Save"></p>
+		<center><input type="file" name="file" value = ""></center>
+        <p style="text-align:center"><button type="submit" class="button button1" name="submit" value="Save"></button>
+        </p>
 		</form>"
 
 

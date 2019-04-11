@@ -25,7 +25,7 @@
 <p style="text-align:center">City: <input style="margin-right: 30px" type="text" name="city" size="15" maxlength="20" value = ""></p>
 <p style="text-align:center">State: <input style="margin-right: 38px" type="text" name="state" size="15" maxlength="20" value = ""></p>
 <p style="text-align:center">Zip Code: <input style="margin-right: 65px" type="text" name="zip" size="15" maxlength="20" value = ""></p>
-<p style="text-align:center"><input class="button button1" type="submit" name="register" value="Register"></p>
+<p style="text-align:center"><button class="button button1" type="submit" name="register" value="Register">Register</button>
 </form>
 
 
