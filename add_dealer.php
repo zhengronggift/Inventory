@@ -19,13 +19,13 @@
 
 
 
-<p style="text-align:center">Add A Dealer</p>
+<p>Add Dealership</p>
 <form action="dealer_back.php" method="POST">
-<p style="text-align:center">Dealer Name: <input style="margin-right: 86px" type="text" name="d_name" size="15" maxlength="20" value = ""></p>
-<p style="text-align:center">City: <input style="margin-right: 30px" type="text" name="city" size="15" maxlength="20" value = ""></p>
-<p style="text-align:center">State: <input style="margin-right: 38px" type="text" name="state" size="15" maxlength="20" value = ""></p>
-<p style="text-align:center">Zip Code: <input style="margin-right: 65px" type="text" name="zip" size="15" maxlength="20" value = ""></p>
-<p style="text-align:center"><button class="button button1" type="submit" name="register" value="Register">Register</button>
+<p>Dealer Name: <input style="margin-right: 86px" type="text" name="d_name" size="15" maxlength="20" value = ""></p>
+<p>City: <input style="margin-right: 30px" type="text" name="city" size="15" maxlength="20" value = ""></p>
+<p>State: <input style="margin-right: 38px" type="text" name="state" size="15" maxlength="20" value = ""></p>
+<p>Zip Code: <input style="margin-right: 65px" type="text" name="zip" size="15" maxlength="20" value = ""></p>
+<p><button class="button button1" type="submit" name="register" value="Register">Register</button>
 </form>
 
 

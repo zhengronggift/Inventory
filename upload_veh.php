@@ -36,16 +36,16 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		<?php if ($did == "0")
 		{echo "<p style='text-align:center'>Dealer ID: "."<input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";}
 		elseif ($did != "0")
-		{echo "<p style='text-align:center'>Dealer ID: ". $did ."</p>";} ?>
-		<p style="text-align:center">VIN #: <input type="text" name="vin" size="15" maxlength="20" value = ""></p>
-		<p style="text-align:center">Year: <input type="text" name="year" size="15" maxlength="20" value = ""></p>
-		<p style="text-align:center">Make: <input type="text" name="make" size="15" maxlength="20" value = ""></p>
-		<p style="text-align:center">Model: <input type="text" name="model" size="15" maxlength="20" value = ""></p>
-		<p style="text-align:center">Color: <input type="text" name="color" size="15" maxlength="20" value = ""></p>
-		<p style="text-align:center">MSRP: <input type="text" name="msrp" size="15" maxlength="20" value = ""></p>
-		<p style="text-align:center">Upload Image: </p>
+		{echo "<p style="margin-right: 60px"'>Dealer ID: ". $did ."</p>";} ?>
+		<p style="margin-right: 35px">VIN #: <input type="text" name="vin" size="15" maxlength="20" value = ""></p>
+		<p style="margin-right: 30px">Year: <input type="text" name="year" size="15" maxlength="20" value = ""></p>
+		<p style="margin-right: 36px">Make: <input type="text" name="make" size="15" maxlength="20" value = ""></p>
+		<p style="margin-right: 38px">Model: <input type="text" name="model" size="15" maxlength="20" value = ""></p>
+		<p style="margin-right: 35px">Color: <input type="text" name="color" size="15" maxlength="20" value = ""></p>
+		<p style="margin-right: 42px">MSRP: <input type="text" name="msrp" size="15" maxlength="20" value = ""></p>
+		<p>Upload Image: </p>
 		<center><input type="file" name="file" value = ""></center>
-        <p style="text-align:center"><button type="submit" class="button button1" name="submit" value="Save"></button>
+        <p style="text-align:center"><button type="submit" class="button button1" name="submit" value="Save">Add</button>
         </p>
 		</form>"
 
