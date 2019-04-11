@@ -4,34 +4,24 @@
        <meta charset="utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
        <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
        <link rel="stylesheet" href="style.css">
-   </head>
+</head>
  
 <body>
        <ul>
-           <li style="float:left"><a><img src="Rice&Beans_Logo.PNG" alt="rice&beans" width="20" height="20"> Welcome to DMS</a></li>
+           <li style="float:left"><a><img src="Rice&Beans_Logo.PNG" alt="circle" width="20" height="20"> Welcome to DMS</a></li>
             <li><a href="get_car.php?did=0">Vehicles</a></li>
            <li><a href= "get_dealer.php">Dealerships</a></li>
        </ul>
-       <br>    
-    
-<button class="button button1" type="button" id="add_car">Add Vehicle</button>
+       <br>
+       <p> </p>
+       <center>    
 
-<script>
-$(document).ready( function() {
-	$("#add_car").on("click", function() {
-		$("#content").load("upload_veh.php?did=<?php echo $_GET['did']; ?>");
-		$("#content2").text("");	
-		$("#content3").text("");	
-	});
-});
-</script>
-
-
-
-<button class="button button1" type="button" id="add_dealer">Add Dealership</button>
+<button class="button button1" type="button" onclick="window.location.href ='add_dealer.php';">Add Dealership</button>
 <script>
 $(document).ready( function() {
 	$("#add_dealer").on("click", function() {
@@ -73,7 +63,6 @@ class load_dealer{
       		echo "</tr>";
     		echo "</thead>";
     		echo "<tbody id='myTable'>";
-		$i = 0;
 		while($row = mysqli_fetch_assoc($result))
     		{
 		$d_id = $row['d_id'];
@@ -94,9 +83,7 @@ class load_dealer{
 		//$num = $row['num'];
 		echo "<tr>";
         	echo "<td>" . $d_id . "</td>";
-		echo "<td><a href='#' id='vin$i'>" . $name . "</a></td>";
-		$vin_array[$i] = $d_id;
-		$i++;
+		echo "<td><a href = 'dealer_info.php?did=$d_id'>" . $name . "</a></td>";
         	echo "<td>" . $row2['f_name'] . " " . $row2['l_name'] . "</td>";
 		echo "<td>" . $city . "</td>";
         	echo "<td>" . $state . "</td>";
@@ -114,14 +101,6 @@ echo  "$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)";
 echo   "});";
 echo  "});";
 echo "});";
-//get vin
-for ($v = 0; $v < $i; $v++){
-echo "$(document).ready(function(){";
-echo "$('#vin$v').on('click', function() {";
-echo "$('#content').load('dealer_info.php?did=$vin_array[$v]')";	
-echo  "});";
-echo "});";
-}
 echo "</script>";
 		echo "</tbody>";
   		echo "</table>";
@@ -135,5 +114,6 @@ $load2 = new load_dealer();
 
 ?>
 
+</div>
 </body>
 </html>

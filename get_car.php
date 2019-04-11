@@ -4,20 +4,24 @@
        <meta charset="utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
        <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
        <link rel="stylesheet" href="style.css">
-   </head>
+</head>
  
 <body>
        <ul>
-           <li style="float:left"><a><img src="Rice&Beans_Logo.PNG" alt="rice&beans" width="20" height="20"> Welcome to DMS</a></li>
+           <li style="float:left"><a><img src="Rice&Beans_Logo.PNG" alt="circle" width="20" height="20"> Welcome to DMS</a></li>
             <li><a href="get_car.php?did=0">Vehicles</a></li>
            <li><a href= "get_dealer.php">Dealerships</a></li>
        </ul>
        <br>
-    
-<button class="button button1" type="button" id="add_car">Add Vehicle</button>
+       <p> </p> 
+       <center>    
+<?php $did = $_GET['did']; ?>
+<button class="button button1" type="button" onclick="window.location.href = 'upload_veh.php?did=<?php echo $did; ?>';">Add New Vehicle</button>
 <script>
 $(document).ready(function(){
 $("#myInput").on("keyup", function() {
@@ -28,17 +32,6 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 });
 });
 </script>
-<script>
-$(document).ready( function() {
-	$("#add_car").on("click", function() {
-		$("#content").load("upload_veh.php?did=<?php echo $_GET['did']; ?>");
-		$("#content2").text("");	
-		$("#content3").text("");	
-	});
-});
-
-</script>
-
 
 		<div class="container">
   		<h2>Vehicle Inventory</h2>
@@ -59,11 +52,10 @@ $(document).ready( function() {
     		<tbody id="myTable">
 <?php
 //get table for vehicles
-//echo $_GET['did'];
 include('connect.php');
 
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
-		$did = $_GET['did']; 
+		//$did = $_GET['did']; 
 		//echo $file;
 		if ($did == 0){
 		$sql = "SELECT * FROM vehicle ORDER BY make";}
@@ -81,7 +73,7 @@ include('connect.php');
 		$color = $row['color'];
 		$msrp = $row['msrp'];
 		echo "<tr>";
-        	echo "<td><a href='#' id='vin$i'>" . $vin . "</a></td>";
+        	echo "<td>" . $vin . "</a></td>";
 		$vin_array[$i] = $vin;
 		echo "<td>" . $year . "</td>";
 		echo "<td>" . $make . "</td>";
@@ -106,22 +98,12 @@ include('connect.php');
 		{echo "<td>SOLD</td>";}
 	       // }
 		}
-echo "<script>";
-//get vin
-for ($v = 0; $v < $i; $v++){
-echo "$(document).ready(function(){";
-echo "$('#vin$v').on('click', function() {";
-echo "$('#content').load('car_info.php?vin=$vin_array[$v]')";	
-echo  "});";
-echo "});";
-}
-echo "</script>";
-		
 
 ?>
 
 </tbody>
-  		</table>
-		</div>
+</table>
+</div>
+</div>
 </body>
 </html>
