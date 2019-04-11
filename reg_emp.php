@@ -126,9 +126,9 @@ include('connect.php');
 <p>Dealer ID: <?echo $_GET['did']; ?></p>
 <p>First Name: <input type="text" name="f_name" size="15" maxlength="20" value = ""></p>
 <p>Last Name: <input type="text" name="l_name" size="15" maxlength="20" value = ""></p>
-<p>Role: <input type="radio" name="emp_man" value="employee" checked> Employee   
-<input type="radio" name="emp_man" value="manager"> Manager</p>
-<p><button class="button button1" type="submit" name="register" value="Register">Register</button>
+<input type="radio" name="emp_man" value="employee" checked>Employee   
+<input type="radio" name="emp_man" value="manager">Manager
+<button class="button button1" type="submit" name="register" value="Register">Register</button>
 </form>
 
 <?php
