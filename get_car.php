@@ -20,7 +20,41 @@
        <br>
        <p> </p> 
        <center>    
-<?php $did = $_GET['did']; ?>
+<?php 
+include('connect.php');
+$did = $_GET['did']; 
+if ($did != 0){
+
+		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
+		//echo $file;
+		$did = $_GET['did'];
+		$sql = "SELECT * FROM dealer WHERE d_id = '$did'";
+		$sql2 = "SELECT * FROM manage m, employee e WHERE m.d_id = '$did' AND e.e_id = m.e_id";
+		$result = mysqli_query($db, $sql);
+		$row = mysqli_fetch_assoc($result);
+		$result2 = mysqli_query($db, $sql2);
+		$row2 = mysqli_fetch_assoc($result2);
+		$city = $row['city'];
+		$state = $row['state'];
+		$zip = $row['zip_code'];
+		$name = $row['name'];
+		$m_f = $row2['f_name'];
+		$m_l = $row2['l_name'];
+	
+        	echo $name . " (Dealer ID:" . $did . ")<br>";
+		echo $city . ", ";
+        	echo $state . ", ";
+        	echo $zip . "<br> ";
+        	echo "Store Manager: " . $m_f . " " . $m_l . "<br>";
+
+echo "<button class='button button1' type='button' onclick='window.location.href = 'get_emp.php?did=$did';>Employees</button>";
+}
+
+
+
+
+
+?>
 <button class="button button1" type="button" onclick="window.location.href = 'upload_veh.php?did=<?php echo $did; ?>';">Add New Vehicle</button>
 <script>
 $(document).ready(function(){
@@ -52,7 +86,6 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     		<tbody id="myTable">
 <?php
 //get table for vehicles
-include('connect.php');
 
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//$did = $_GET['did']; 

@@ -25,14 +25,6 @@
 <?php
 //to get dealer info
 include('connect.php');
-//echo "Hello " . $_GET['did']; 
-class load_car{
-	var $message = array();
-	function __construct(){
-		$this->loadcar();
-  	}
-		function loadcar(){
-
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
 		$did = $_GET['did'];
@@ -54,39 +46,10 @@ class load_car{
         	echo $state . ", ";
         	echo $zip . "<br> ";
         	echo "Store Manager: " . $m_f . " " . $m_l . "<br>";
-		//echo " <button type='button' id='inventory'>Vehicle Inventory</button> ";
-		//echo " <button type='button' id='employee'>Employees</button> ";
-		//echo "<button type='button' id='sold'>Sold Vehicles</button><br>";
+?>
 
-		}
-}
-$load = new load_car();	
-
-?> 
-
-<button class="button button1" type="button" id="veh">Vehicle Inventory</button>
-<button class="button button1" type="button" id="emp">Employees</button>
-
-<div id = "content" class="container">
-
-</div>
-
-<script>
-$(document).ready( function() {
-	$("#veh").on("click", function() {
-		$("#content").load("get_car.php?did=<?php echo $did; ?>");
-		$("#content2").text("");
-		$("#content3").text("");	
-	});
-});
-$(document).ready( function() {
-	$("#emp").on("click", function() {
-		$("#content").load("get_emp.php?did=<?php echo $did; ?>");	
-		$("#content2").text("");
-		$("#content3").text("");	
-	});
-});
-</script>
+<button class="button button1" type="button" onclick="window.location.href = 'get_car.php?did=<?php echo $did; ?>';">Vehicle Inventory</button>
+<button class="button button1" type="button" onclick="window.location.href = 'get_emp.php?did=<?php echo $did; ?>';">Employees</button>
 
 
 </div>
