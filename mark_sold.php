@@ -1,7 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+       <title>Dealership Inventory</title>
+       <link rel="stylesheet" href="main.css">
+       <link rel="stylesheet" href="style.css">
+</head>
+ 
+<body>
+       <ul>
+           <li style="float:left"><a><img src="Rice&Beans_Logo.PNG" alt="circle" width="20" height="20"> Welcome to DMS</a></li>
+            <li><a href="get_car.php?did=0">Vehicles</a></li>
+           <li><a href= "get_dealer.php">Dealerships</a></li>
+       </ul>
+       <br>
+       <p> </p>
+       <center> 
+
+
+
+
+
+
+<?php
+include('connect.php');
+		$vin = $_GET['vin'];
+		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
+		$sql = "SELECT d_id FROM inventory WHERE vin_num = '$vin'";
+		$result = mysqli_query($db, $sql);
+		$row = mysqli_fetch_assoc($result);
+		$did = $row['d_id'];
+?>
+
+<p>Selling Vehicle: <?php echo $vin; ?> </p>
+<form action="mark_sold.php?vin=<?php echo $vin; ?>" method="POST">
+<input type="hidden" name="a_v" value = "$vin">
+<input type="hidden" name="did" value = "$did">
+<p>Sold Date: </p>
+<input type="date" name="sold_d" value = ""><br>
+<p>Sold Price: </p>
+<input type="text" name="sold_p" value = ""><br>
+<p>Employee ID: </p>
+<input type="text" name="sold_e" value = ""><br>
+<input type="submit" class="button button1" name="carsold" value= "Mark As Sold">
+</form>
+<br>
+
+
 <?php
 //echo "Hello " . $_GET['vin']; 
-
-include('connect.php');
 class sale_car{
 	var $message = array();
 	function __construct(){
@@ -38,25 +89,7 @@ $vin = $_GET['vin'];
 
 	
 	function loadcar(){
-		$vin = $_GET['vin'];
-		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
-		$sql = "SELECT d_id FROM inventory WHERE vin_num = '$vin'";
-		$result = mysqli_query($db, $sql);
-		$row = mysqli_fetch_assoc($result);
-		$did = $row['d_id'];
-		echo "Selling Vehicle: " . $vin . "<br>";
-		echo "<form action='mark_sold.php?vin=$vin' method='POST' >";
-		echo "<input type='hidden' name='a_v' value = '$vin'>";
-		echo "<input type='hidden' name='did' value = '$did'>";
-		echo "<br>Sold Date: ";
-		echo "<input type='date' name='sold_d' value = ''><br>";
-		echo "Sold Price: ";
-		echo "<input type='text' name='sold_p' value = ''><br>";
-		echo "Employee ID: ";
-		echo "<input type='text' name='sold_e' value = ''><br>";
-		echo "<input type='submit' class='button button1' name='carsold' value= 'Mark As Sold'>";
-		echo "</form>";
-		echo "<br>";
+
 	}	
 	
 	function in_sold($vin, $sold_d, $sold_p, $sold_e, $did){
@@ -76,3 +109,7 @@ $vin = $_GET['vin'];
 //implement
 $load = new sale_car();
 ?>
+
+</div>
+</body>
+</html>

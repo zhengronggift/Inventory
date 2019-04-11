@@ -47,7 +47,10 @@ if ($did != 0){
         	echo $zip . "<br> ";
         	echo "Store Manager: " . $m_f . " " . $m_l . "<br>";
 
-echo "<button class='button button1' type='button' onclick='window.location.href = 'get_emp.php?did=$did';>Employees</button>";
+echo "<form action='get_emp.php?did=$did' method='post'>";
+echo "<p style='text-align:center'><button type='submit' class='button button1' name='submit' value='Employees'>Employees</button></p>";
+echo "</form>";
+
 }
 
 
@@ -55,6 +58,8 @@ echo "<button class='button button1' type='button' onclick='window.location.href
 
 
 ?>
+<br>
+<br>
 <button class="button button1" type="button" onclick="window.location.href = 'upload_veh.php?did=<?php echo $did; ?>';">Add New Vehicle</button>
 <script>
 $(document).ready(function(){
@@ -106,7 +111,7 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		$color = $row['color'];
 		$msrp = $row['msrp'];
 		echo "<tr>";
-        	echo "<td>" . $vin . "</a></td>";
+        	echo "<td><a href = 'car_info.php?vin=$vin'>" . $vin . "</a></td>";
 		$vin_array[$i] = $vin;
 		echo "<td>" . $year . "</td>";
 		echo "<td>" . $make . "</td>";

@@ -34,8 +34,9 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		<p style="text-align:center">Add Vehicle </p>
 		<form action="veh_back.php?did=<?php echo $did; ?>" method="POST" enctype="multipart/form-data">
 		<?php if ($did == "0")
-		{echo "<p style='margin-right: 60px'>Dealer ID: "."<input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";}
-		elseif ($did != "0")?>
+		{echo "<p style='text-align:center'>Dealer ID: "."<input type='text' name='d_id' size='15' maxlength='20' value = ''></p>";}
+		elseif ($did != "0")
+		{echo "<p style='margin-right:60px'>Dealer ID: ". $did ."</p>";} ?>
 		<p style="margin-right: 35px">VIN #: <input type="text" name="vin" size="15" maxlength="20" value = ""></p>
 		<p style="margin-right: 30px">Year: <input type="text" name="year" size="15" maxlength="20" value = ""></p>
 		<p style="margin-right: 36px">Make: <input type="text" name="make" size="15" maxlength="20" value = ""></p>
