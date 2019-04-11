@@ -9,6 +9,74 @@
        <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
        <link rel="stylesheet" href="style.css">
+
+<style>
+div.gallery {
+  border: 3px solid #0f8eeaf7;
+
+}
+
+div.gallery:hover {
+  border: 3px solid #0f8eeaf7;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: center;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#left
+{
+  float: left;
+}
+
+#center
+{
+  float: center;
+}
+
+#right
+{
+  float: right;
+}
+
+</style>
+
+
 </head>
  
 <body>
@@ -19,9 +87,25 @@
        </ul>
        <br>
        <p> </p>
-       <center>    
+       <center>   
 
-<button class="button button1" type="button" onclick="window.location.href ='add_dealer.php';">Add Dealership</button>
+
+
+<?php
+include('connect.php');
+		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
+		//echo $file;
+		$sql = "SELECT * FROM dealer ORDER BY name";
+		//echo $sql;
+		$result = mysqli_query($db, $sql);
+		echo "<div class='container'>";
+  		echo "<h2>Dealerships</h2>";
+  		echo "<div id='center'><input id='myInput' type='text' placeholder='Search..'></div>";
+?>
+
+<div id="left">
+<button class="button button1" type="button" onclick="window.location.href = 'add_dealer.php';">Add Dealership</button>
+</div>
 <script>
 $(document).ready( function() {
 	$("#add_dealer").on("click", function() {
@@ -33,22 +117,6 @@ $(document).ready( function() {
 </script>
 
 <?php
-include('connect.php');
-class load_dealer{
-	var $message = array();
-	function __construct(){
-		$this->loadcar();
-  	}
-
-	function loadcar(){
-		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
-		//echo $file;
-		$sql = "SELECT * FROM dealer ORDER BY name";
-		//echo $sql;
-		$result = mysqli_query($db, $sql);
-		echo "<div class='container'>";
-  		echo "<h2>Dealerships</h2>";
-  		echo "<input id='myInput' type='text' placeholder='Search..'>";          
   		echo "<br><br><table class='table table-bordered'>";
     		echo "<thead>";
       		echo "<tr>";
@@ -105,12 +173,7 @@ echo "</script>";
 		echo "</tbody>";
   		echo "</table>";
 		echo "</div>";	
-	}	
-
-}
-
-$load2 = new load_dealer();
-//implement
+	
 
 ?>
 

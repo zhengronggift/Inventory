@@ -9,6 +9,75 @@
        <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
        <link rel="stylesheet" href="style.css">
+
+<style>
+div.gallery {
+  border: 3px solid #0f8eeaf7;
+
+}
+
+div.gallery:hover {
+  border: 3px solid #0f8eeaf7;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: center;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#left
+{
+  float: left;
+}
+
+#center
+{
+  float: center;
+}
+
+#right
+{
+  float: right;
+}
+
+</style>
+
+
+
 </head>
  
 <body>
@@ -21,18 +90,11 @@
        <p> </p>
        <center> 
 
-
-
+<div class="responsive">
+  <div class="gallery">
 <?php
 //to modify vehicle status (move it to sold, transfer, etc)
 include('connect.php');
-//echo "Hello " . $_GET['vin']; 
-class load_car{
-	var $message = array();
-	function __construct(){
-		$this->loadcar();
-  	}
-		function loadcar(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
 		$vin = $_GET['vin'];
@@ -47,7 +109,7 @@ class load_car{
 		$msrp = $row['msrp'];
 		$picture = $vin . ".jpg";
 		//echo $picture;
-		echo "<img src='picture/". $picture . "'  width='300'>" . "<br>";
+		echo "<img src='picture/". $picture . "'  width='600' height='400'>" . "<br>";
         	echo "Vin Number: " . $vin . "<br>";
 		echo "Make: " . $make . "<br>";
         	echo "Model: " . $model . "<br>";
@@ -66,13 +128,18 @@ class load_car{
 		$dealer = $row3['name'];
 		echo "Availability: ";
 		if ($row == 0){
-		echo "AVAILABLE ";
+		echo "AVAILABLE <br>";
 		echo "Location: " . $dealer . "<br>";
-		echo "<button class='button button1' type='button' id='sold'> Mark As Sold</button>";
-		echo "        ";
-		echo "<button class='button button1' type='button' id='trans'> Transfer</button>";	
-		echo "        ";
-		echo "<button class='button button1' type='button' id='delete'> Delete</button><br><br>";	
+echo  "</div></div><br>";
+?>
+
+<button class="button button1" type="button" onclick="window.location.href = 'mark_sold.php?vin=<?php echo $vin; ?>';">Sell</button>
+<button class="button button1" type="button" onclick="window.location.href = 'transf_car.php?vin=<?php echo $vin; ?>';">Transfer</button>
+<button class="button button1" type="button" onclick="window.location.href = 'delete_car.php?vin=<?php echo $vin; ?>';">Delete</button>
+
+
+
+<?php
 		}
 		else
 		{echo "SOLD<br>";
@@ -80,36 +147,10 @@ class load_car{
 		echo "Sold date: " . $row['sold_d'] . "<br>";
 		echo "Sold price: $" . $row['sold_p'] . "<br>";
 		echo "Location: " . $dealer . "<br><br>";
+		echo  "</div></div>";
 		}
-
-
-echo "<script>";
-//action for mark sold
-echo "$(document).ready(function(){";
-echo "$('#sold').on('click', function() {";
-echo "$('#content2').load('mark_sold.php?vin=$vin')";	
-echo  "});";
-echo "});";
-//action for transfer
-echo "$(document).ready(function(){";
-echo "$('#trans').on('click', function() {";
-echo "$('#content2').load('transf_car.php?vin=$vin')";	
-echo  "});";
-echo "});";
-echo "$(document).ready(function(){";
-echo "$('#delete').on('click', function() {";
-echo "$('#content').load('delete_car.php?vin=$vin')";	
-echo  "});";
-echo "});";
-echo "</script>";
-
-
-		}
-}
-$load = new load_car();	
+			
 ?> 
 
-
-</div>
 </body>
 </html>

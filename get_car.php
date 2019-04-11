@@ -4,11 +4,79 @@
        <meta charset="utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
        <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
        <link rel="stylesheet" href="style.css">
+
+<style>
+div.gallery {
+  border: 3px solid #0f8eeaf7;
+
+}
+
+div.gallery:hover {
+  border: 3px solid #0f8eeaf7;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: center;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#left
+{
+  float: left;
+}
+
+#center
+{
+  float: center;
+}
+
+#right
+{
+  float: right;
+}
+
+</style>
+
+
 </head>
  
 <body>
@@ -18,13 +86,15 @@
            <li><a href= "get_dealer.php">Dealerships</a></li>
        </ul>
        <br>
-       <p> </p> 
-       <center>    
+       <p> </p>
+       <center> 
+  
 <?php 
 include('connect.php');
 $did = $_GET['did']; 
 if ($did != 0){
-
+		echo "<div class='responsive'>";
+  		echo "<div class='gallery'>";
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
 		$did = $_GET['did'];
@@ -41,26 +111,28 @@ if ($did != 0){
 		$m_f = $row2['f_name'];
 		$m_l = $row2['l_name'];
 	
-        	echo $name . " (Dealer ID:" . $did . ")<br>";
+        	echo "<br><font size='4'>" . $name . " (Dealer ID:" . $did . ")</font><br><br>";
 		echo $city . ", ";
         	echo $state . ", ";
         	echo $zip . "<br> ";
-        	echo "Store Manager: " . $m_f . " " . $m_l . "<br>";
-
+        	echo "Store Manager: <b>" . $m_f . " " . $m_l . "</b><br><br>";
+		echo "</div></div><br>";
 echo "<form action='get_emp.php?did=$did' method='post'>";
 echo "<p style='text-align:center'><button type='submit' class='button button1' name='submit' value='Employees'>Employees</button></p>";
 echo "</form>";
-
 }
 
-
-
-
-
 ?>
+
+		<div class="container">
+  		<h2>Vehicle Inventory</h2>
+		<div id="center">
+  		<input id="myInput" type="text" placeholder="Search..">    
+		</div>
 <br>
-<br>
+<div id="left">
 <button class="button button1" type="button" onclick="window.location.href = 'upload_veh.php?did=<?php echo $did; ?>';">Add New Vehicle</button>
+</div>
 <script>
 $(document).ready(function(){
 $("#myInput").on("keyup", function() {
@@ -72,9 +144,7 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 });
 </script>
 
-		<div class="container">
-  		<h2>Vehicle Inventory</h2>
-  		<input id="myInput" type="text" placeholder="Search..">         
+     
   		<br><br><table class="table table-bordered">
     		<thead>
       		<tr>

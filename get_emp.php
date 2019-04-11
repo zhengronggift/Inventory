@@ -9,6 +9,74 @@
        <title>Dealership Inventory</title>
        <link rel="stylesheet" href="main.css">
        <link rel="stylesheet" href="style.css">
+
+<style>
+div.gallery {
+  border: 3px solid #0f8eeaf7;
+
+}
+
+div.gallery:hover {
+  border: 3px solid #0f8eeaf7;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: center;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#left
+{
+  float: left;
+}
+
+#center
+{
+  float: center;
+}
+
+#right
+{
+  float: right;
+}
+
+</style>
+
+
 </head>
  
 <body>
@@ -19,13 +87,15 @@
        </ul>
        <br>
        <p> </p>
-       <center> 
+       <center>  
+
 
 <?php 
 include('connect.php');
 $did = $_GET['did']; 
 if ($did != 0){
-
+echo "<div class='responsive'>";
+echo "<div class='gallery'>";
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
 		$did = $_GET['did'];
@@ -42,12 +112,12 @@ if ($did != 0){
 		$m_f = $row2['f_name'];
 		$m_l = $row2['l_name'];
 	
-        	echo $name . " (Dealer ID:" . $did . ")<br>";
+        	echo "<br><font size='4'>" . $name . " (Dealer ID:" . $did . ")</font><br><br>";
 		echo $city . ", ";
         	echo $state . ", ";
         	echo $zip . "<br> ";
-        	echo "Store Manager: " . $m_f . " " . $m_l . "<br>";
-
+        	echo "Store Manager: <b>" . $m_f . " " . $m_l . "</b><br><br>";
+		echo "</div></div><br>";
 echo "<form action='get_car.php?did=$did' method='post'>";
 echo "<p style='text-align:center'><button type='submit' class='button button1' name='submit' value='Vehicle Inventory'>Vehicle Inventory</button></p>";
 echo "</form>";
@@ -56,17 +126,11 @@ echo "</form>";
 
 ?>
 
-<button class="button button1" type="button" onclick="window.location.href ='reg_emp.php?did=<?php echo $_GET['did']; ?>';">Add New Employees</button>
+
 
 
 <?php
-class load_emp{
-	var $message = array();
-	function __construct(){
-		$this->loade();
-  	}
 
-	function loade(){
 		$db = mysqli_connect(db_servername, db_username, db_pass, db_dbname);
 		//echo $file;
 		$did = $_GET['did']; 
@@ -83,10 +147,18 @@ echo   "});";
 echo  "});";
 echo "});";
 echo "</script>";
+?>
 
-		echo "<div class='container'>";
-  		echo "<h2>Employee Table</h2>";
-  		echo "<input id='myInput' type='text' placeholder='Search..'>";           
+		<div class="container">
+  		<h2>Employee Table</h2>
+		<div id="center">
+  		<input id="myInput" type="text" placeholder="Search..">    
+		</div>
+<br>
+<div id="left">
+<button class="button button1" type="button" onclick="window.location.href ='reg_emp.php?did=<?php echo $_GET['did']; ?>';">Add New Employees</button>
+</div>
+<?php        
   		echo "<br><br><table class='table table-bordered'>";
     		echo "<thead>";
       		echo "<tr>";
@@ -123,12 +195,7 @@ echo "</script>";
 		echo "</tbody>";
   		echo "</table>";
 		echo "</div>";	
-	}	
-
-}
-
-$load = new load_emp();
-//implement
+	
 ?>
 
 </div>
